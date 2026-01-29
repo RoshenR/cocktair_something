@@ -44,6 +44,7 @@ jobs:
 
       - name: Trivy FRONT Scanner
         uses: aquasecurity/trivy-action@0.28.0
+        if: always()
         with:
           image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_LOWER }}-front:latest
           format: 'table'
