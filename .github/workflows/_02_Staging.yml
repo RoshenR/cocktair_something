@@ -12,7 +12,18 @@ jobs:
     steps:
       - run: env | sort
 
+  Build_Push_Docker:
+    if: ${{ github.ref_name == 'develop'}}
+    uses: ./.github/workflows/z_Docker-Ghcr.yml
+    secrets: inherit
+    with:
+      docker-mode: canary
+
+  Trivy_Scan:
+    needs: [Build_Push_Docker]
+    uses: ./.github/workflows/02-2_TrivyScan.yml
+    secrets: inherit
 
 
 
-      
+
