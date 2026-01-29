@@ -1,0 +1,18 @@
+name: 02 - Staging
+
+on:
+  push:
+    branches:
+      - develop
+      - release/*
+
+jobs:
+  Display_Data:
+    runs-on: ubuntu-latest
+    steps:
+      - run: env | sort
+
+
+
+
+      
